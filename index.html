@@ -28,14 +28,6 @@
             color: white;
         }
         
-        #instructions {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            backdrop-filter: blur(10px);
-        }
-        
         #backButton {
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -68,20 +60,6 @@
 <body>
     <div id="container">
         <div id="ui">
-            <div id="instructions">
-                <div id="homeInstructions">
-                    <h3>🌐 360度パノラマビューワー</h3>
-                    <p>球体をタップ/クリックして内部に入り、360度ビューを体験してください</p>
-                    <p>📱 スマホ: タッチで視点回転・ピンチでズーム<br>
-                    🖥️ PC: マウスで視点回転・ホイールでズーム</p>
-                </div>
-                <div id="panoramaInstructions" style="display: none;">
-                    <h3>🎮 パノラマビュー</h3>
-                    <p>📱 スマホ: ドラッグで視点回転・ピンチでズーム<br>
-                    🖥️ PC: マウスドラッグで視点回転・ホイールでズーム</p>
-                    <p>下のボタンでホーム画面に戻れます</p>
-                </div>
-            </div>
             <button id="backButton">🏠 ホームに戻る</button>
         </div>
     </div>
@@ -97,9 +75,9 @@
         // パノラマ画像のURL（実際の360度写真に置き換えてください）
         const panoramaImages = [
             './sea.JPG',
-            './harrypoter.JPG',
+            './harrypoter.jpg',
             './night.JPG',
-            './daytime.JPG',
+            './daytime.jpg',
             './paris.png'
         ];
 
@@ -577,9 +555,7 @@
         function enterPanorama(index) {
             currentMode = 'panorama';
             
-            // UIの切り替え
-            document.getElementById('homeInstructions').style.display = 'none';
-            document.getElementById('panoramaInstructions').style.display = 'block';
+            // 戻るボタンのみ表示
             document.getElementById('backButton').style.display = 'block';
             
             // パノラマ球体のテクスチャを設定
@@ -604,9 +580,7 @@
         function showHomeScene() {
             currentMode = 'home';
             
-            // UIの切り替え
-            document.getElementById('homeInstructions').style.display = 'block';
-            document.getElementById('panoramaInstructions').style.display = 'none';
+            // 戻るボタンを非表示
             document.getElementById('backButton').style.display = 'none';
             
             // カメラをリセット
